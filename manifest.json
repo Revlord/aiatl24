@@ -2,8 +2,16 @@
     "manifest_version": 3,
     "name": "Privacy Policy Analyzer",
     "version": "1.0",
-    "description": "Analyzes privacy policies and terms of service to show key privacy implications",
-    "permissions": ["activeTab", "scripting"],
+    "description": "Analyzes privacy policies and terms of service using Claude AI",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "<all_urls>",
+      "https://api.anthropic.com/*"
+    ],
     "action": {
       "default_icon": {
         "16": "images/icon16.png",
@@ -16,11 +24,12 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"],
-        "css": ["styles.css"]
-      }
-    ]
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }],
+    "background": {
+      "service_worker": "background.js"
+    }
   }
