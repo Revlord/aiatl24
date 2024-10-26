@@ -1,4 +1,4 @@
-const CLAUDE_API_KEY = 'your-api-key-here';
+const CLAUDE_API_KEY = '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';
 
 chrome.action.onClicked.addListener((tab) => {
   chrome.tabs.sendMessage(tab.id, {action: 'extractAndAnalyze'});
